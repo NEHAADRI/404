@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>StyleSakhi - AI Fashion Stylist</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>👗 StyleSakhi</h1>
+<h2>Smart Fashion for Indian Women</h2>
+
+<div class="section">
+
+<h3>Your Profile</h3>
+
+<input id="name" placeholder="Your Name">
+
+<select id="size">
+<option value="">Size</option>
+<option>XS</option>
+<option>S</option>
+<option>M</option>
+<option>L</option>
+<option>XL</option>
+<option>XXL</option>
+</select>
+
+<select id="shape">
+<option value="">Body Shape</option>
+<option>Hourglass</option>
+<option>Pear</option>
+<option>Apple</option>
+<option>Rectangle</option>
+<option>Inverted Triangle</option>
+</select>
+
+<select id="tone">
+<option value="">Skin Tone</option>
+<option>Fair</option>
+<option>Medium</option>
+<option>Olive</option>
+<option>Dusky</option>
+<option>Deep</option>
+</select>
+
+<select id="vibe">
+<option value="">Style</option>
+<option>Simple</option>
+<option>Trendy</option>
+<option>Elegant</option>
+<option>Desi</option>
+<option>Bold</option>
+</select>
+
+<select id="occasion">
+<option value="">Occasion</option>
+<option>College</option>
+<option>Office</option>
+<option>Festival</option>
+<option>Wedding</option>
+<option>Party</option>
+<option>Daily Wear</option>
+</select>
+
+<select id="budget">
+<option value="">Budget (₹)</option>
+<option>Under 1000</option>
+<option>1000 - 3000</option>
+<option>3000 - 7000</option>
+<option>7000+</option>
+</select>
+
+<button onclick="generateStyle()">Get My Look</button>
+
+</div>
+
+
+<div class="section">
+
+<h3>Your Recommendation</h3>
+<div id="result"></div>
+
+</div>
+
+
+<div class="section">
+
+<h3>Suggested Stores</h3>
+<div id="stores"></div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
