@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RAWAAZ – Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="login-page">
+    <div class="login-left">
+        <div class="welcome-message">
+            <h2>Welcome to</h2>
+            <h1>RAWAAZ</h1>
+            <p>Your personal AI fashion stylist</p>
+            <div class="icons">
+                <span>👗</span>
+                <span>✨</span>
+                <span>💄</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="login-right">
+        <div class="login-card">
+            <div class="logo-container">
+                <img src="assets/1772230813310.jpg" alt="RAWAAZ logo" class="logo">
+            </div>
+            
+            <!-- Login Form -->
+            <div id="loginContainer">
+                <h3>Sign In</h3>
+                <p class="login-subtitle">Get your personalized style recommendations</p>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">✉️</span>
+                            <input type="email" id="loginEmail" placeholder="you@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="loginPassword" placeholder="••••••••" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="login-btn">Login to RAWAAZ</button>
+                    <div id="loginError" class="error-message"></div>
+                </form>
+
+                <p class="signup-link">New to RAWAAZ? <a href="#" onclick="toggleAuthMode(event)">Create an account</a></p>
+            </div>
+
+            <!-- Signup Form -->
+            <div id="signupContainer" style="display:none;">
+                <h3>Create Account</h3>
+                <p class="login-subtitle">Join RAWAAZ today</p>
+
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">👤</span>
+                            <input type="text" id="signupName" placeholder="Your Name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupEmail">Email Address</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">✉️</span>
+                            <input type="email" id="signupEmail" placeholder="you@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="signupPassword" placeholder="••••••••" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="login-btn">Create Account</button>
+                    <div id="signupError" class="error-message"></div>
+                </form>
+
+                <p class="signup-link">Already have an account? <a href="#" onclick="toggleAuthMode(event)">Sign In</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module">
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+import { auth } from "./firebase-config.js";
+
+function toggleAuthMode(e) {
+    e.preventDefault();
+    document.getElementById('loginContainer').style.display = document.getElementById('loginContainer').style.display === 'none' ? 'block' : 'none';
+    document.getElementById('signupContainer').style.display = document.getElementById('signupContainer').style.display === 'none' ? 'block' : 'none';
+}
+
+// Login
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    const errorDiv = document.getElementById('loginError');
+
+    try {
+        errorDiv.textContent = 'Logging in...';
+        const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        localStorage.setItem('userEmail', email);
+        window.location.href = 'index.html';
+    } catch (error) {
+        errorDiv.textContent = error.message;
+    }
+});
+
+// Signup
+document.getElementById('signupForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('signupName').value;
+    const email = document.getElementById('signupEmail').value;
+    const password = document.getElementById('signupPassword').value;
+    const errorDiv = document.getElementById('signupError');
+
+    try {
+        errorDiv.textContent = 'Creating account...';
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        localStorage.setItem('userName', name);
+        localStorage.setItem('userEmail', email);
+        window.location.href = 'index.html';
+    } catch (error) {
+        errorDiv.textContent = error.message;
+    }
+});
+
+window.toggleAuthMode = toggleAuthMode;
+</script>
+
+</body>
+</html>

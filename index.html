@@ -2,101 +2,181 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>StyleSakhi - AI Fashion Stylist</title>
-
+<title>RAWAAZ - AI Fashion Stylist</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="container">
-
-<h1>👗 StyleSakhi</h1>
-<h2>Smart Fashion for Indian Women</h2>
-
-<div class="section">
-
-<h3>Your Profile</h3>
-
-<input id="name" placeholder="Your Name">
-
-<select id="size">
-<option value="">Size</option>
-<option>XS</option>
-<option>S</option>
-<option>M</option>
-<option>L</option>
-<option>XL</option>
-<option>XXL</option>
-</select>
-
-<select id="shape">
-<option value="">Body Shape</option>
-<option>Hourglass</option>
-<option>Pear</option>
-<option>Apple</option>
-<option>Rectangle</option>
-<option>Inverted Triangle</option>
-</select>
-
-<select id="tone">
-<option value="">Skin Tone</option>
-<option>Fair</option>
-<option>Medium</option>
-<option>Olive</option>
-<option>Dusky</option>
-<option>Deep</option>
-</select>
-
-<select id="vibe">
-<option value="">Style</option>
-<option>Simple</option>
-<option>Trendy</option>
-<option>Elegant</option>
-<option>Desi</option>
-<option>Bold</option>
-</select>
-
-<select id="occasion">
-<option value="">Occasion</option>
-<option>College</option>
-<option>Office</option>
-<option>Festival</option>
-<option>Wedding</option>
-<option>Party</option>
-<option>Daily Wear</option>
-</select>
-
-<select id="budget">
-<option value="">Budget (₹)</option>
-<option>Under 1000</option>
-<option>1000 - 3000</option>
-<option>3000 - 7000</option>
-<option>7000+</option>
-</select>
-
-<button onclick="generateStyle()">Get My Look</button>
-
+<!-- User Navigation Bar -->
+<div class="user-nav">
+	<div class="user-info">
+		<span id="userGreeting">Welcome!</span>
+	</div>
+	<button class="logout-btn" onclick="logout()">Logout 🚪</button>
 </div>
 
-
-<div class="section">
-
-<h3>Your Recommendation</h3>
-<div id="result"></div>
-
+<!-- SLIDE 1: WELCOME SCREEN -->
+<div id="slide1" class="slide active">
+	<div class="welcome-container">
+		<div class="welcome-content">
+			<div class="welcome-logo">
+				<img src="assets/1772230813310.jpg" alt="RAWAAZ logo">
+			</div>
+			<h1 class="welcome-title">RAWAAZ</h1>
+			<h2 class="welcome-subtitle">Smart Fashion for Indian Women</h2>
+			<p class="welcome-desc">Get personalized styling suggestions powered by AI, curated just for your body shape, skin tone, and style preferences.</p>
+			<div class="feature-list">
+				<div class="feature-item">👗 Perfect Fits</div>
+				<div class="feature-item">✨ Trend Picks</div>
+				<div class="feature-item">💰 Budget Smart</div>
+			</div>
+			<button class="welcome-btn" onclick="start()">Get Started</button>
+		</div>
+	</div>
 </div>
 
+<!-- SLIDE 2: PROFILE FORM -->
+<div id="slide2" class="slide">
+	<div class="form-container">
+		<div class="form-header">
+			<img src="assets/1772230813310.jpg" alt="RAWAAZ logo" class="form-logo">
+			<h1>Let's Style You</h1>
+			<p>Tell us about yourself so we can find your perfect look</p>
+		</div>
 
-<div class="section">
+		<section class="section profile-section">
+			<div class="profile-form">
+				<div class="field fullwidth">
+					<label>Full Name</label>
+					<div class="input-wrapper">
+						<span class="input-icon">👤</span>
+						<input id="name" placeholder="Your Name">
+					</div>
+				</div>
 
-<h3>Suggested Stores</h3>
-<div id="stores"></div>
+				<div class="field">
+					<label>Body Shape</label>
+					<div class="input-wrapper">
+						<span class="input-icon">⌛</span>
+						<select id="shape">
+							<option value="">Select Shape</option>
+							<option>Hourglass</option>
+							<option>Pear</option>
+							<option>Apple</option>
+							<option>Rectangle</option>
+							<option>Inverted Triangle</option>
+						</select>
+					</div>
+				</div>
 
+				<div class="field">
+					<label>Size</label>
+					<div class="input-wrapper">
+						<span class="input-icon">📏</span>
+						<select id="size">
+							<option value="">Select Size</option>
+							<option>XS</option>
+							<option>S</option>
+							<option>M</option>
+							<option>L</option>
+							<option>XL</option>
+							<option>XXL</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="field">
+					<label>Skin Tone</label>
+					<div class="input-wrapper">
+						<span class="input-icon">🎨</span>
+						<select id="tone">
+							<option value="">Select Tone</option>
+							<option>Fair</option>
+							<option>Medium</option>
+							<option>Olive</option>
+							<option>Dusky</option>
+							<option>Deep</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="field">
+					<label>Style Preference</label>
+					<div class="input-wrapper">
+						<span class="input-icon">✨</span>
+						<select id="vibe">
+							<option value="">Select Style</option>
+							<option>Simple</option>
+							<option>Trendy</option>
+							<option>Elegant</option>
+							<option>Desi</option>
+							<option>Bold</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="field">
+					<label>Occasion</label>
+					<div class="input-wrapper">
+						<span class="input-icon">🎉</span>
+						<select id="occasion">
+							<option value="">Select Occasion</option>
+							<option>College</option>
+							<option>Office</option>
+							<option>Festival</option>
+							<option>Wedding</option>
+							<option>Party</option>
+							<option>Daily Wear</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="field">
+					<label>Budget</label>
+					<div class="input-wrapper">
+						<span class="input-icon">💵</span>
+						<select id="budget">
+							<option value="">Select Budget</option>
+							<option>Under 1000</option>
+							<option>1000 - 3000</option>
+							<option>3000 - 7000</option>
+							<option>7000+</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="field fullwidth">
+					<button class="submit-btn" onclick="generateStyle()">Get My Look</button>
+				</div>
+			</div>
+		</section>
+	</div>
 </div>
 
+<!-- SLIDE 3: RESULTS -->
+<div id="slide3" class="slide">
+	<div class="results-container">
+		<div class="results-header">
+			<img src="assets/1772230813310.jpg" alt="RAWAAZ logo" class="form-logo">
+			<h1>Your Perfect Style</h1>
+			<p>Here's what we recommend for you</p>
+		</div>
+
+		<section class="section">
+			<h3>✨ Your Recommendation</h3>
+			<div id="result" class="results-grid"></div>
+		</section>
+
+		<section class="section">
+			<h3>🛍️ Suggested Stores</h3>
+			<div id="stores" class="stores-grid"></div>
+		</section>
+
+		<button class="back-btn" onclick="goBack()">← Back to Profile</button>
+	</div>
 </div>
 
-<script src="script.js"></script>
+<script type="module" src="script.js"></script>
 </body>
 </html>

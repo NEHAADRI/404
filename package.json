@@ -1,0 +1,10 @@
+{
+  "name": "rawaaz",
+  "version": "1.0.0",
+  "description": "RAWAAZ - AI Fashion Stylist for Indian Women",
+  "type": "module",
+  "main": "index.html",
+  "keywords": ["fashion", "ai", "stylist"],
+  "author": "",
+  "license": "ISC"
+}
