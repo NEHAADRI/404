@@ -85,14 +85,20 @@ List the key features of your project:
 
 #### Screenshots (Add at least 3)
 
-![]()
-*Add caption explaining what this shows*
+![<img width="1920" height="1032" alt="Screenshot 2026-02-28 082318" src="https://github.com/user-attachments/assets/9bb72286-906e-45b5-8e02-e3cbd58214d1" />
+]()
+*login page*
+![<img width="1920" height="1032" alt="Screenshot 2026-02-28 082336" src="https://github.com/user-attachments/assets/e909a1ec-4311-41cc-a8eb-ebc2bb685220" />
+](Add screenshot 2 here with proper name)
+*next page*
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+![<img width="1920" height="1032" alt="Screenshot 2026-02-28 082352" src="https://github.com/user-attachments/assets/b7c18aa3-f024-401d-84fe-8e45358d2fcb" />
+](Add screenshot 3 here with proper name)
+*home page*
+![<img width="1920" height="1032" alt="Screenshot 2026-02-28 082446" src="https://github.com/user-attachments/assets/8d1f27b2-16d8-49ee-aedd-96ed2354fe4f" />
+](Add screenshot 3 here with proper name)
+*<img width="1920" height="1032" alt="Screenshot 2026-02-28 082446" src="https://github.com/user-attachments/assets/4d61d8ce-0ffb-4c8f-bbff-9e8d3e0bf8d8" />
+*
 
 #### Diagrams
 
