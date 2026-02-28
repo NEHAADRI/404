@@ -1,3 +1,31 @@
+import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+import { auth } from "./firebase-config.js";
+
+// Session Management
+window.addEventListener('load', () => {
+	onAuthStateChanged(auth, (user) => {
+		if (user) {
+			// User is logged in
+			const displayName = localStorage.getItem('userName') || user.email.split('@')[0];
+			document.getElementById('userGreeting').textContent = `Welcome, ${displayName}! 👋`;
+		} else {
+			// User is not logged in - redirect to login
+			window.location.href = 'login.html';
+		}
+	});
+});
+
+// Logout Function
+window.logout = async function() {
+	try {
+		await signOut(auth);
+		localStorage.removeItem('userName');
+		localStorage.removeItem('userEmail');
+		window.location.href = 'login.html';
+	} catch (error) {
+		alert('Error logging out: ' + error.message);
+	}
+};
 
 // Outfit Data
 
@@ -63,11 +91,11 @@ Deep:["White","Red","Purple","dark black","navy blue","maroon"]
 
 const shapeTips = {
 
-Hourglass:"Highlight waist with fitted kurtis","croptops with low waist denim","long bodycon"
-Pear:"Wear bright tops and A-line skirts","highwaist skirt and midloose skirt "
-Apple:"Choose flowy dresses","v neck and scoop necklines",""
-Rectangle:"Use belts and layers",
-InvertedTriangle:"Balance shoulders with wide bottoms"
+Hourglass:["Highlight waist with fitted kurtis","croptops with low waist denim","long bodycon"],
+Pear:["Wear bright tops and A-line skirts","highwaist skirt and midloose shirt "],
+Apple:["Choose flowy dresses","v neck and scoop necklines"],
+Rectangle:["Use belts and layers","use wrap dresses and add volume to bust or hips"],
+InvertedTriangle:["Balance shoulders with wide bottoms","opt for wideleg,palazzo,cargo,or flared jeans","dark top with light bottums"]
 
 };
 
@@ -76,8 +104,8 @@ InvertedTriangle:"Balance shoulders with wide bottoms"
 
 const stores = {
 
-"Under 1000":["Reliance Trends","Max Fashion"],
-"1000 - 3000":["Westside","Biba","Pantaloons"],
+"Under 1000":["Reliance Trends","Max Fashion","SM street","Zudio"],
+"1000 - 3000":["Westside","Biba","Pantaloons","H&M","Myntra"],
 "3000 - 7000":["W","Fabindia","Soch"],
 "7000+":["Manyavar Mohey","Designer Boutique"]
 
@@ -109,7 +137,7 @@ let outfit = outfitList[Math.floor(Math.random()*outfitList.length)];
 
 let color = colors[tone][Math.floor(Math.random()*3)];
 
-let tip = shapeTips[shape];
+let tip = shapeTips[shape]
 
 let storeList = stores[budget];
 
@@ -153,4 +181,24 @@ html += `
 
 document.getElementById("stores").innerHTML = html;
 
+// Switch to results slide
+document.getElementById('slide2').classList.remove('active');
+document.getElementById('slide3').classList.add('active');
+
 }
+
+// Slide Navigation Functions
+function start() {
+    document.getElementById('slide1').classList.remove('active');
+    document.getElementById('slide2').classList.add('active');
+}
+
+function goBack() {
+    document.getElementById('slide3').classList.remove('active');
+    document.getElementById('slide2').classList.add('active');
+}
+
+// expose to global scope for inline onclick attributes
+window.start = start;
+window.goBack = goBack;
+window.generateStyle = generateStyle;
